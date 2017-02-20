@@ -16,40 +16,62 @@ def main():
 
 	net = Mininet()
 	c0 = net.addController()
+	
+	r1 = net.addSwitch("r1")
 	s1 = net.addSwitch("s1")
+	s2 = net.addSwitch("s2")
 	h1 = net.addHost("h1")
 	h2 = net.addHost("h2")
-	net.addLink(h1, s1)
-	net.addLink(h2, s1)
-
-	#c1 = net.addController()
-	s2 = net.addSwitch("s2")
 	h3 = net.addHost("h3")
 	h4 = net.addHost("h4")
-	net.addLink(h3, s2)
-	net.addLink(h4, s2)
 
-	s0 = net.addSwitch("s0")
+	net.addLink(r1, s1)
+	net.addLink(r1, s2)
+	
+	net.addLink(s1, h1)
+	net.addLink(s1, h2)
+	net.addLink(s2, h3)
+	net.addLink(s2, h4)
 
-	s0.cmd("sysctl -w net.ipv4.ip_forward=1")
-        s1.cmd("sysctl -w net.ipv4.ip_forward=1")
-	s2.cmd("sysctl -w net.ipv4.ip_forward=1")
+	r2 = net.addSwitch("r2")
+	s3 = net.addSwitch("s3")
+	s4 = net.addSwitch("s4")
+	h5 = net.addHost("h5")
+	h6 = net.addHost("h6")
+	h7 = net.addHost("h7")
+	h8 = net.addHost("h8")
+
+	net.addLink(r2, s3)
+	net.addLink(r2, s4)
+	
+	net.addLink(s3, h5)
+	net.addLink(s3, h6)
+	net.addLink(s4, h7)
+	net.addLink(s4, h8) 
+	
+	r3 = net.addSwitch("r3")
+	s5 = net.addSwitch("s5")
+	s6 = net.addSwitch("s6")
+	h9 = net.addHost("h9")
+	h10 = net.addHost("h10")
+	h11 = net.addHost("h11")
+	h12 = net.addHost("h12")
+
+	net.addLink(r3, s5)
+	net.addLink(r3, s6)
+	
+	net.addLink(s5, h9)
+	net.addLink(s5, h10)
+	net.addLink(s6, h11)
+	net.addLink(s6, h12) 
+
+	r1.cmd("sysctl -w net.ipv4.ip_forward=1")
+        r2.cmd("sysctl -w net.ipv4.ip_forward=1")
+	r3.cmd("sysctl -w net.ipv4.ip_forward=1")
 	print "Wait 3 seconds"
 	sleep(3)
-        '''print "Configuring router"
-	s1.cmd("/usr/lib/quagga/zebra -f conf/s1.conf -d -i /tmp/zebraS1.pid > S1-zebra-stdout 2>&1")'''
 
 	net.start()
-
-	'''h1.cmd("ifconfig h1-eth0 10.0.1.2/24")
-	h1.waitOutput()
-	h1.cmd("route add default gw 10.0.1.1")
-	h1.waitOutput()
-
-	h2.cmd("ifconfig h2-eth0 10.0.3.2/24")
-	h2.waitOutput()
-	h2.cmd("route add default gw 10.0.3.1")
-	h2.waitOutput()'''
 
 	#net.start()
 	CLI(net)
