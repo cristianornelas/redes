@@ -27,6 +27,8 @@ def main():
 	net.addLink(h4, s2)
 
 	s0 = net.addSwitch("s0")
+	net.addLink(s0, s1)
+	net.addLink(s0, s2)
 
 	s0.cmd("sysctl -w net.ipv4.ip_forward=1")
         s1.cmd("sysctl -w net.ipv4.ip_forward=1")
