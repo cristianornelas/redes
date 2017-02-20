@@ -35,6 +35,29 @@ def main():
 
 	net.start()
 
+	h1.cmd("ifconfig h1-eth0 10.0.0.1/24")
+	h1.waitOutput()
+	h2.cmd("ifconfig h2-eth0 10.0.0.2/24")
+	h2.waitOutput()
+
+	h1.cmd("route add default gw 10.0.0.254 h1-eth0")
+	h1.waitOutput()
+	h2.cmd("route add default gw 10.0.0.254 h2-eth0")
+	h2.waitOutput()
+
+	h3.cmd("ifconfig h3-eth0 20.0.0.1/24")
+	h3.waitOutput()
+	h4.cmd("ifconfig h4-eth0 20.0.0.2/24")
+	h4.waitOutput()
+
+	h3.cmd("route add default gw 20.0.0.254 h3-eth0")
+	h3.waitOutput()
+	h4.cmd("route add default gw 20.0.0.254 h4-eth0")
+	h4.waitOutput()
+
+	s1.cmd("ifconfig s1:0 10.0.0.254")
+	s2.cmd("ifconfig s2:0 20.0.0.254")	
+
 	CLI(net)
 	net.stop()
 
