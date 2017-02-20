@@ -44,7 +44,7 @@ def main():
 	net.addLink(s1, s2)
 
 	#Ativa o ip_forward nos switches e espera 3 segundos para que as mudancas tenham efeito
-    s1.cmd("sysctl -w net.ipv4.ip_forward=1")
+	s1.cmd("sysctl -w net.ipv4.ip_forward=1")
 	s2.cmd("sysctl -w net.ipv4.ip_forward=1")
 	print "Wait 3 seconds"
 	sleep(3)
@@ -52,25 +52,25 @@ def main():
 	#Inicia a rede
 	net.start()
 
-	#Configura o endereço ip dos hosts da primeira subrede
+	#Configura o endereco ip dos hosts da primeira subrede
 	h1.cmd("ifconfig h1-eth0 10.0.0.1/24")
 	h1.waitOutput()
 	h2.cmd("ifconfig h2-eth0 10.0.0.2/24")
 	h2.waitOutput()
 
-	#Configura o gateway padrão dos hosts da primeira subrede
+	#Configura o gateway padrao dos hosts da primeira subrede
 	h1.cmd("route add default gw 10.0.0.254 h1-eth0")
 	h1.waitOutput()
 	h2.cmd("route add default gw 10.0.0.254 h2-eth0")
 	h2.waitOutput()
 
-	#Configura o endereço ip dos hosts da segunda subrede
+	#Configura o endereco ip dos hosts da segunda subrede
 	h3.cmd("ifconfig h3-eth0 20.0.0.1/24")
 	h3.waitOutput()
 	h4.cmd("ifconfig h4-eth0 20.0.0.2/24")
 	h4.waitOutput()
 
-	#Configura o gateway padrão dos hosts da primeira subrede
+	#Configura o gateway padrao dos hosts da primeira subrede
 	h3.cmd("route add default gw 20.0.0.254 h3-eth0")
 	h3.waitOutput()
 	h4.cmd("route add default gw 20.0.0.254 h4-eth0")

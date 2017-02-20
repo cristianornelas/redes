@@ -30,7 +30,7 @@ def main():
 	net.addLink(h2, s1)
 
 	#Ativa o ip_forward no switch e espera 3 segundos para que as mudancas tenham efeito
-    s1.cmd("sysctl -w net.ipv4.ip_forward=1")
+	s1.cmd("sysctl -w net.ipv4.ip_forward=1")
 	print "Wait 3 seconds"
 	sleep(3)
 
