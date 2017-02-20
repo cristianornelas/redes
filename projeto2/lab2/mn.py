@@ -26,11 +26,8 @@ def main():
 	net.addLink(h3, s2)
 	net.addLink(h4, s2)
 
-	s0 = net.addSwitch("s0")
-	net.addLink(s0, s1)
-	net.addLink(s0, s2)
+	net.addLink(s1, s2)
 
-	s0.cmd("sysctl -w net.ipv4.ip_forward=1")
         s1.cmd("sysctl -w net.ipv4.ip_forward=1")
 	s2.cmd("sysctl -w net.ipv4.ip_forward=1")
 	print "Wait 3 seconds"
