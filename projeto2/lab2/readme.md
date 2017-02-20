@@ -13,11 +13,14 @@ Resultados :
 Conseguimos realizar o ping entre os hosts de diferentes subredes, mas apenas se utilizassemos primeiro o comando ping host a host. Sem esse passo, o comando pingall era incapaz de verificar a conexão entre todos os hosts.
 
 Subrede 1
+
 ![Subrede 1] (images/1.png)
 
 Subrede 2
+
 ![Subrede 2] (images/2.png)
 
 Nodes, subredes e pingall
+
 ![nodes subredes pingall ] (images/3.png)
 =
