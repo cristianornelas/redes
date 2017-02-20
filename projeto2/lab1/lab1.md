@@ -18,5 +18,5 @@ pingall e h1 ping h2.
 
 ![Verificando os ips dos hosts criados] (images/2.png)
 
-![Pingall e h1 ping h2]] (images/3.png) 
+![Pingall e h1 ping h2] (images/3.png) 
 =
