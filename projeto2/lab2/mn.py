@@ -25,8 +25,22 @@ def main():
         s1.cmd("sysctl -w net.ipv4.ip_forward=1")
 	print "Wait 3 seconds"
 	sleep(3)
+        print "Configuring router"
+	s1.cmd("/usr/lib/quagga/zebra -f conf/s1.conf -d -i /tmp/zebraS1.pid > S1-zebra-stdout 2>&1")
 
 	net.start()
+
+	h1.cmd("ifconfig h1-eth0 10.0.1.2/24")
+	h1.waitOutput()
+	h1.cmd("route add default gw 10.0.1.1")
+	h1.waitOutput()
+
+	h2.cmd("ifconfig h2-eth0 10.0.3.2/24")
+	h2.waitOutput()
+	h2.cmd("route add default gw 10.0.3.1")
+	h2.waitOutput()
+
+	#net.start()
 	CLI(net)
 	net.stop()
 	os.system("killall -9 zebra bgpd")
