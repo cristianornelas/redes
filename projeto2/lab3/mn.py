@@ -89,7 +89,7 @@ def main():
 	net.addLink(s6, h11)
 	net.addLink(s6, h12) 
 
-	#Ativa o ip_forward entre os dois switches das duas subredes e espera as mudanças terem efeito
+	#Ativa o ip_forward entre os dois switches das duas subredes e espera as mudancas terem efeito
 	r1.cmd("sysctl -w net.ipv4.ip_forward=1")
     r2.cmd("sysctl -w net.ipv4.ip_forward=1")
 	r3.cmd("sysctl -w net.ipv4.ip_forward=1")

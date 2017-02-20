@@ -43,7 +43,7 @@ def main():
 	#Cria o link entre os dois switches das duas subredes
 	net.addLink(s1, s2)
 
-	#Ativa o ip_forward nos switches e espera 3 segundos para que as mudanças tenham efeito
+	#Ativa o ip_forward nos switches e espera 3 segundos para que as mudancas tenham efeito
     s1.cmd("sysctl -w net.ipv4.ip_forward=1")
 	s2.cmd("sysctl -w net.ipv4.ip_forward=1")
 	print "Wait 3 seconds"
